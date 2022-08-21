@@ -1,0 +1,45 @@
+<div>
+    <header class="p-3 bg-gradient bg-opacity-15 text-light  bg-dark " style="width: 100%;">
+        <div class="container">
+            <div class=" d-inline">
+                <h2> Product Description <button class="btn btn-success " (click)="back()"
+                         style="position: absolute; right: 15%;"> Back </button>
+                    <button class="btn btn-danger d-inline" style="position: absolute; right: 5%;"
+                        (click)="logoutFunc()"> Logout </button>
+                </h2>
+            </div>
+        </div>
+    </header>
+
+    <div class="p-5">
+
+        <div class="my-cont container card-cont">
+            <div class="card" style="width: 20rem;">
+                <img style="width:100%;" class="card-img-top" src="{{data.productImageURL}}" alt="Card image cap">
+                <div class="card-body">
+                    <h5 class="card-title"> {{data.productName}} </h5>
+                    <p class="card-text"><b>{{data.productCode}}</b></p>
+                    <p class="card-text"> <b> {{data.productBrand}} </b></p>
+                    <p class="card-text"><b>₹{{data.productPrice}}</b></p>
+                    <p class="card-text"><b>{{data.productDetails}}</b></p>
+
+                </div>
+            </div>
+
+            <div class="container">
+                <h3> {{message}} </h3>
+                <form class="p-3" [formGroup]="checkServiceabilityForm" (ngSubmit)="checkServiceability()">
+                    <div class="form-outline mb-4">
+                        <input style="width: 30%;" type="number" id="pinCode"
+                            class="form-control form-control-lg d-inline" placeholder="Enter PIN Code"
+                            formControlName="pinCode" (click)="clearFunc()" />
+                        <button class="btn btn-primary btn-lg"> Check Serviceability </button>
+                    </div>
+
+                </form>
+
+            </div>
+        </div>
+
+    </div>
+</div>

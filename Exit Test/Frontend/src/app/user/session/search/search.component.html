@@ -1,0 +1,77 @@
+<div>
+
+
+    <header class="p-3 bg-gradient bg-opacity-15 text-light  bg-dark " style="width: 100%;">
+        <div class="container">
+            <div class=" d-inline">
+                <h2> Search Result <button class="btn btn-primary" style="position: absolute; right: 25%;" (click)="home()"> Home </button> 
+                    <button class="btn btn-secondary " (click)="priceFunc()"
+                        *ngIf="!display && data.length" style="position: absolute; right: 15%;"> Get Price </button>
+                    <button class="btn btn-danger d-inline" style="position: absolute; right: 5%;"
+                        (click)="logoutFunc()"> Logout </button> </h2>
+            </div>
+        </div>
+    </header>
+
+    <div *ngIf="data.length">
+        <div class="container mt-5 mb-3 text-center">
+            <form [formGroup]="priceFilterForm" (ngSubmit)="filterDetails()">
+                    <select name="productPrice" id="productPrice"  formControlName="productPriceRange"
+                        class="form-control form-control-lg  d-inline  " style="width: 30%;">
+                        <option value="" selected disabled hidden>Select Price Range</option>
+                        <option value="1|500000">Min-Max (Rs. 1-500K)</option>
+                        <option value="1|10000">Under Rs. 10000</option>
+                        <option value="10000|25000">Rs. 10K-25K</option>
+                        <option value="25000|100000">Rs. 25K-100K</option>
+                        <option value="100000|500000">Rs. 100K-500K</option>
+                    </select >
+                    <button class=" btn btn-primary btn-lg" type="submit">Apply Filter</button>
+            </form>
+        </div>
+    </div>
+
+    <div *ngIf="data.length">
+        <table style="width: 100%;" class="text-center">
+            <thead>
+                <th style="width: 30%;">
+                    Product Image
+                </th>
+                <th style="width: 15%;">
+                    Product Code
+                </th>
+                <th style="width: 15%;">
+                    Product Brand
+                </th>
+                <th style="width: 15%;">
+                    Product Name
+                </th>
+                <th style="width: 10%;" *ngIf="display">
+                    Product Price
+                </th>
+                <th style="width: 15%;">
+                    Actions
+                </th>
+            </thead>
+            <tbody>
+                <tr *ngFor="let items of data">
+                        <td style="width: 30%;"> <img src="{{items.productImageURL}}" alt="Error Loading " style="width: 150px;height: 200px;"> </td>
+                        <td style="width: 15%;"> {{items.productCode}}</td>
+                        <td style="width: 15%;">{{items.productBrand}} </td>
+                        <td style="width: 15%;">{{items.productName}}</td>
+                        <td style="width: 10%;" *ngIf="display">  {{items.productPrice}} </td>
+                        <td style="width: 15%;"> <a routerLink="../getdescription" [queryParams]="{pc:items.productCode,pcs:pcs,pns:pns,pb:pb}"> <button class="btn btn-primary"> Get Details </button> </a>  </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+    <div *ngIf="!data.length">
+        <h3>
+            :( Product You are Searching For does not exist
+
+            <div class="container">
+                <button class="btn btn-success" (click)="back()"> Back </button>
+            </div>
+        </h3>
+    </div>
+
+</div>
