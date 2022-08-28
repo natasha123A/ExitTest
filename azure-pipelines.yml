@@ -72,7 +72,16 @@ steps:
 
   inputs:
 
-    PathtoPublish: 
+    PathtoPublish: 'C:\Users\nishtha\Downloads\vsts-agent-win-x64-2.206.1\_work\6\s\Frontend\dist'
+
+    ArtifactName: 'drop'
+
+    publishLocation: 'Container'
+- task: PublishBuildArtifacts@1
+
+  inputs:
+
+    PathtoPublish: 'C:\Users\nishtha\Downloads\vsts-agent-win-x64-2.206.1\_work\6\s\RestAPIServices\target' 
 
     ArtifactName: 'drop'
 
