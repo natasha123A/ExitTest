@@ -30,7 +30,7 @@ steps:
 
     command: 'install'
 
-    workingDir: 'C:\Users\nishtha\Downloads\vsts-agent-win-x64-2.206.1\_work\4\s\Frontend'
+    workingDir: 'C:\Users\nishtha\Downloads\vsts-agent-win-x64-2.206.1\_work\6\s\Frontend'
 
 
 
@@ -40,7 +40,7 @@ steps:
 
     command: 'custom'
 
-    workingDir: 'C:\Users\nishtha\Downloads\vsts-agent-win-x64-2.206.1\_work\4\s\Frontend'
+    workingDir: 'C:\Users\nishtha\Downloads\vsts-agent-win-x64-2.206.1\_work\6\s\Frontend'
 
     customCommand: 'run ng build'
 
@@ -50,7 +50,7 @@ steps:
 
   inputs:
 
-    mavenPomFile: 'C:\Users\nishtha\Downloads\vsts-agent-win-x64-2.206.1\_work\4\s\RestAPIServies\pom.xml'
+    mavenPomFile: 'C:\Users\nishtha\Downloads\vsts-agent-win-x64-2.206.1\_work\6\s\RestAPIServies\pom.xml'
 
     codeCoverageToolOption: 'JaCoCo'
 
