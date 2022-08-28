@@ -1,0 +1,89 @@
+# Starter pipeline
+# Start with a minimal pipeline that you can customize to build and deploy your code.
+# Add steps that build, run tests, deploy, and more:
+# https://aka.ms/yaml
+
+trigger:
+
+- master
+
+
+
+pool:
+
+  myagent
+
+
+
+
+steps:
+
+- script: echo Hello, world!
+
+  displayName: 'Run a one-line script'
+
+  
+
+- task: Npm@1
+
+  inputs:
+
+    command: 'install'
+
+    workingDir: 'C:\Users\docker\Downloads\vsts-agent-win-x64-2.206.1\_work\4\s\Frontend'
+
+
+
+- task: Npm@1
+
+  inputs:
+
+    command: 'custom'
+
+    workingDir: 'C:\Users\docker\Downloads\vsts-agent-win-x64-2.206.1\_work\4\s\Frontend'
+
+    customCommand: 'run ng build'
+
+
+
+- task: Maven@3
+
+  inputs:
+
+    mavenPomFile: 'C:\Users\docker\Downloads\vsts-agent-win-x64-2.206.1\_work\4\s\RestAPIServies\pom.xml'
+
+    codeCoverageToolOption: 'JaCoCo'
+
+    javaHomeOption: 'JDKVersion'
+
+    mavenVersionOption: 'Default'
+
+    mavenOptions: '-Xmx1024m'
+
+    mavenAuthenticateFeed: false
+
+    effectivePomSkip: false
+
+    sonarQubeRunAnalysis: false
+
+
+
+- task: PublishBuildArtifacts@1
+
+  inputs:
+
+    PathtoPublish: 
+
+    ArtifactName: 'drop'
+
+    publishLocation: 'Container'
+
+
+
+- script: |
+
+    echo Add other tasks to build, test, and deploy your project.
+
+    echo See https://aka.ms/yaml
+
+  displayName: 'Run a multi-line script'
