@@ -10,7 +10,7 @@ import { ProductModel } from './user/product.model';
 export class ProductCatalogService {
 
   constructor(private http:HttpClient) { }
-  private url = "http://localhost:8083";
+  private url = "http://20.219.159.177:8443";
   
   registerUser(userData:UserModel){
     return this.http.post<UserModel>(this.url+"/createuser",userData).pipe(map((res:any)=>{
