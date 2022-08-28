@@ -52,7 +52,7 @@ steps:
 
     mavenPomFile: 'C:\Users\nishtha\Downloads\vsts-agent-win-x64-2.206.1\_work\6\s\RestAPIServices\pom.xml'
 
-    codeCoverageToolOption: 'JaCoCo'
+    codeCoverageToolOption: 'None'
 
     javaHomeOption: 'JDKVersion'
 
